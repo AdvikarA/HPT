@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harvard Purity Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Harvard Purity Test</h1>
+  <p class="description">
+    Welcome to the Harvard Purity Test! You’ve found the definitive guide to the Harvard student experience.<br>
+    This test is not affiliated with Harvard College, though it’s certainly more honest than the admissions brochure.<br>
+    Click every box that you’ve completed.
+  </p>
+
+  <div class="container">
+    <ol id="question-list"></ol>
+  </div>
+
+  <div class="button-container">
+    <button class="button" onclick="calculateScore()" id="submit">Calculate My Score!</button>
+    <button class="button" onclick="resetForm()" id="reset">Clear Checkboxes</button>
+  </div>
+
+  <div class="score" id="scoreDisplay" style="display: none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
