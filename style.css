@@ -45,15 +45,19 @@ h1 {
 ol {
   list-style: none;
   padding: 0;
-  max-width: 700px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   text-align: left;
 }
 
 li {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 900px;
 }
 
 label {
@@ -64,6 +68,7 @@ label {
   transition: background 0.3s;
   font-size: 1rem;
   cursor: pointer;
+  width: 100%;
 }
 
 input[type="checkbox"] {
@@ -72,21 +77,14 @@ input[type="checkbox"] {
   height: 18px;
   appearance: none;
   border: 2px solid crimson;
-  border-radius: 3px;
-  position: relative;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 input[type="checkbox"]:checked {
   background-color: crimson;
-}
-
-input[type="checkbox"]:checked::after {
-  content: '\2713';
-  color: white;
-  font-size: 14px;
-  position: absolute;
-  top: -2px;
-  left: 3px;
+  border: none;
 }
 
 .button-container {
@@ -149,6 +147,7 @@ input[type="checkbox"]:checked::after {
   max-width: 90%;
   width: 300px;
   text-align: left;
+  border-radius: 10px;
 }
 
 /* Close button for popup */
