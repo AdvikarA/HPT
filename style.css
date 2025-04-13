@@ -21,16 +21,17 @@ body.scroll-lock {
 }
 
 h1 {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Imperial Script', cursive;
   font-size: 4rem;
   color: crimson;
-  margin-bottom: 10px;
   text-align: center;
-  line-height: 1.3;       /* Increased line-height for extra vertical space */
-  padding-top: 5px;       /* Extra padding helps prevent clipping on top */
-  overflow: visible;      /* Ensures any overflow is shown */
+  line-height: 1.3;
+  padding-top: 5px;
+  overflow: visible;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 @media (max-width: 768px) {
   h1 {
