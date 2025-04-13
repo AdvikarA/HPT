@@ -26,28 +26,32 @@ h1 {
   color: crimson;
   text-align: center;
   line-height: 1.3;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   
-  /* Fix for rendering issues */
-  transform: translateZ(0); /* Force hardware acceleration */
-  padding: 0.1px; /* Prevent margin collapsing */
-  will-change: transform; /* Hint for browser optimization */
+  /* Fix for double rendering */
+  text-rendering: geometricPrecision;
+  -webkit-text-stroke: 0;
+  
+  /* Remove all transform and hardware acceleration that could cause issues */
+  transform: none;
+  -webkit-transform: none;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
   
   /* Remove problematic properties */
   overflow: visible;
-  -webkit-backface-visibility: visible;
   backface-visibility: visible;
+  -webkit-backface-visibility: visible;
 }
 
 @media (max-width: 768px) {
   h1 {
     font-size: 2.8rem;
     line-height: 1.2;
-    /* Add extra padding on mobile */
-    padding: 5px 0;
-    /* Letter spacing can help with rendering */
-    letter-spacing: 0.02em;
+    /* Ensure clean rendering on mobile */
+    text-shadow: none;
+    /* Slightly decrease letter spacing to prevent overflow */
+    letter-spacing: -0.01em;
   }
 }
 
