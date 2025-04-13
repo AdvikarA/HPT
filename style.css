@@ -30,7 +30,13 @@ h1 {
   padding-top: 5px;       /* Extra padding helps prevent clipping on top */
   overflow: visible;      /* Ensures any overflow is shown */
 }
-
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+    line-height: 1.4;
+    padding-top: 10px;
+  }
+}
 .description {
   font-size: 1rem;
   color: #555;
