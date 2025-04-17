@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harvard Purity Test</title>
+  <!-- Preload the font to avoid FOUT (Flash of Unstyled Text) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <h1>Harvard Purity Test</h1>
+    <p class="description">
+      <b>Welcome to the Harvard Purity Test — the definitive guide to the Harvard student experience.<br>
+      This test is not affiliated with Harvard College, though it's a more realistic picture of the College than any admissions brochure.<br>
+      Warning: this is not a checklist. Completion of certain items may result in disciplinary action.<br>
+      Use the info bubbles to clarify any questions. Click every box you're completed:</b>
+    </p>
+
+    <div class="container">
+      <ol id="question-list"></ol>
+    </div>
+
+    <div class="button-container">
+      <button class="button" onclick="calculateScore()" id="submit">Calculate My Score!</button>
+      <button class="button" onclick="resetForm()" id="reset">Clear Checkboxes</button>
+      <div class="score" id="scoreDisplay">Your Score: __</div>
+      <button class="button share-button" onclick="shareScore()" id="shareButton" style="display: none;">Share with Friends</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
