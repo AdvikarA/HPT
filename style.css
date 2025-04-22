@@ -16,10 +16,12 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* No more frozen background when popups open */
 body.scroll-lock {
-  overflow: hidden;
+  overflow: auto;
 }
 
+/* Title */
 h1 {
   position: relative;
   font-family: 'Cormorant SC', serif;
@@ -30,28 +32,16 @@ h1 {
   margin: 20px 0;
   font-weight: 600;
   padding: 20px 0;
-  background-color: #f3f0eb; /* Light beige color that complements the #fdfaf5 background */
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  
-  /* Fix for double rendering */
   text-rendering: geometricPrecision;
   -webkit-text-stroke: 0;
-  
-  /* Remove all transform and hardware acceleration that could cause issues */
   transform: none;
   -webkit-transform: none;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
-  
-  /* Remove problematic properties */
   overflow: visible;
   backface-visibility: visible;
   -webkit-backface-visibility: visible;
 }
-
 @media (max-width: 768px) {
   h1 {
     font-size: 2.8rem;
@@ -61,6 +51,7 @@ h1 {
   }
 }
 
+/* Description */
 .description {
   font-size: 1rem;
   color: #555;
@@ -68,31 +59,39 @@ h1 {
   line-height: 3;
 }
 
+/* Wrapper */
+.page-wrapper {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Question list */
 .container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-
 ol {
   list-style: none;
   padding: 0;
+  margin: 0 auto;
   max-width: 900px;
   width: 100%;
-  margin: 0 auto;
   text-align: left;
 }
 
+/* Each <li> is now a positioning context */
 li {
+  position: relative;
   margin-bottom: 4px;
   line-height: 1.2;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  max-width: 900px;
+  overflow: visible;     /* ← allow popups to poke outside */
+  /* remove text-overflow if you don't need it */
 }
 
+
+/* Labels & checkboxes */
 label {
   display: flex;
   align-items: center;
@@ -103,7 +102,6 @@ label {
   cursor: pointer;
   width: 100%;
 }
-
 input[type="checkbox"] {
   margin-right: 12px;
   width: 18px;
@@ -114,16 +112,15 @@ input[type="checkbox"] {
   border-radius: 4px;
   cursor: pointer;
 }
-
 input[type="checkbox"]:checked {
   background-color: crimson;
   border: none;
 }
 
+/* Buttons */
 .button-container {
   margin-top: 30px;
 }
-
 .button {
   padding: 12px 20px;
   font-size: 16px;
@@ -135,11 +132,11 @@ input[type="checkbox"]:checked {
   cursor: pointer;
   margin: 0 10px;
 }
-
 .button:hover {
   background-color: rgba(255, 90, 90, 0.5);
 }
 
+/* Score display */
 .score {
   margin-top: 20px;
   padding: 20px;
@@ -149,16 +146,27 @@ input[type="checkbox"]:checked {
   color: crimson;
 }
 
+/* Share button */
+.share-button {
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+}
+.share-button:hover {
+  background-color: #45a049;
+}
+
+/* Category headers */
 .category {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 1.3rem;
   color: #800000;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin: 30px 0 10px;
   text-align: center;
 }
 
+/* Info‑icon */
 .info-icon {
   font-size: 0.9rem;
   color: #007BFF;
@@ -168,24 +176,27 @@ input[type="checkbox"]:checked {
   user-select: none;
 }
 
-/* Popup styles */
+/* Inline click‑popup */
 .popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  /* remove any left/top from here */
+  width: 300px;
+  padding: 5px 10px; /* Reduced top/bottom padding */
   background-color: white;
   border: 1px solid #ccc;
-  padding: 20px;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 90%;
-  width: 300px;
-  text-align: left;
   border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: left;
+  transform: none;
+}
+.popup {
+  /* tighten top/bottom to 2px, keep some left/right breathing room */
+  padding: 2px 10px;
 }
 
-/* Close button for popup */
+
+/* Close button inside popup */
 .close-popup {
   cursor: pointer;
   color: red;
@@ -194,21 +205,7 @@ input[type="checkbox"]:checked {
   font-size: 18px;
 }
 
-.page-wrapper {
-  flex: 1;
-  padding: 20px;
-}
-
-.share-button {
-  margin-top: 20px;
-  background-color: #4CAF50; /* Green color for share button */
-  color: white;
-}
-
-.share-button:hover {
-  background-color: #45a049;
-}
-
+/* "Copied to clipboard" toast */
 .copy-popup {
   position: fixed;
   bottom: 20px;
@@ -224,7 +221,6 @@ input[type="checkbox"]:checked {
   transition: opacity 0.3s ease;
   z-index: 1000;
 }
-
 .copy-popup.show {
   opacity: 1;
 }
