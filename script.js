@@ -2,7 +2,7 @@
 window.shareScore = function() {
   const scoreText = document.getElementById('scoreDisplay').textContent;
   const score = scoreText.match(/\d+/)[0];
-  const shareText = `My Harvard Purity score was: ${score}. Take the test:\nharvardpuritytest.com`;
+  const shareText = `I got a ${score} on HPT. Take the test:\nharvardpuritytest.com`;
   
   // Copy to clipboard
   navigator.clipboard.writeText(shareText).then(() => {
@@ -188,12 +188,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   window.calculateScore = function () {
-    const total = qCounter - 1;
     const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-    const score = total - checked;
+    const score = 100 - checked;
     const scoreDisplay = document.getElementById('scoreDisplay');
     scoreDisplay.style.display = 'block';
-    scoreDisplay.textContent = `Your Purity Score: ${score}/${total}`;
+    scoreDisplay.textContent = `Your Purity Score: ${score}`;
 
     // After setting the score, show the share button
     document.getElementById('shareButton').style.display = 'inline-block';
